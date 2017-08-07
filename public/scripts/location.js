@@ -8,93 +8,53 @@ var corvallis = {lat: 44.57, lng: -123.28};
  * @constructor
  */
 function CenterControl(controlDiv, map) {
+  //add button element
+  var dropBtn = document.createElement('button');
+  dropBtn.setAttribute("onclick", "dropdownFunction()");
+  dropBtn.setAttribute("class", "dropbtn");
+  dropBtn.innerHTML = 'Options';
+  controlDiv.appendChild(dropBtn);
 
-  // Set CSS for the control border.
-  var controlUI = document.createElement('div');
-  controlUI.style.backgroundColor = '#fff';
-  controlUI.style.border = '12px solid #fff';
-  controlUI.style.borderRadius = '3px';
-  controlUI.style.boxShadow = '0 2px 6px rgba(0,0,0,.3)';
-  controlUI.style.cursor = 'pointer';
-  controlUI.style.marginBottom = '22px';
-  controlUI.style.textAlign = 'center';
-  controlUI.title = 'Select an option';
-  controlDiv.appendChild(controlUI);
+  //add div element to hold options
+  var optionContainer = document.createElement('div');
+  optionContainer.setAttribute("class", "dropdown-content");
+  optionContainer.setAttribute("id", "myDropdown");
+  controlDiv.appendChild(optionContainer);
 
-  // Set CSS for the control interior.
-  var controlText = document.createElement('select');
-  controlText.setAttribute("id", "LocationAccessDropDown");
-  controlText.style.color = 'rgb(25,25,25)';
-  controlText.style.fontFamily = 'Roboto,Arial,sans-serif';
-  controlText.style.fontSize = '16px';
-  controlText.style.lineHeight = '38px';
-  controlText.style.paddingLeft = '5px';
-  controlText.style.paddingRight = '5px';
-  controlText.innerHTML = 'Center Map';
-  controlUI.appendChild(controlText); 
-  
-  // create option1 drop down element
-  var z = document.createElement("option");
-  z.setAttribute("value", "1");
-  var t = document.createTextNode("Enter Billing Info");
-  z.appendChild(t);
-  controlText.appendChild(z);
-  
-  // create option2 drop down element
-  z = document.createElement("option");
-  z.setAttribute("value", "2");
-  t = document.createTextNode("Enter Model and Make");
-  z.appendChild(t);
-  controlText.appendChild(z);
+  //add first option
+  var a = document.createElement('a');
+  a.setAttribute("href", "#");
+  var b = document.createTextNode("Enter Billing Info");
+  a.appendChild(b);
+  optionContainer.appendChild(a);
 
-  z = document.createElement("option");
-  z.setAttribute("value", "3");
-  t = document.createTextNode("Enter Gas Station Preferences");
-  z.appendChild(t);
-  controlText.appendChild(z);
+  //add second option
+  a = document.createElement('a');
+  a.setAttribute("href", "#");
+  b = document.createTextNode("Enter Model and Make");
+  a.appendChild(b);
+  optionContainer.appendChild(a);
+
+  //add third option
+  a = document.createElement('a');
+  a.setAttribute("href", "#");
+  b = document.createTextNode("Enter Gas Station Preferences");
+  a.appendChild(b);
+  optionContainer.appendChild(a);
+
+  //add fourth option
+  a = document.createElement('a');
+  a.setAttribute("href", "http://flip3.engr.oregonstate.edu:9477/preferences");
+  b = document.createTextNode("Enter My Preferences");
+  a.appendChild(b);
+  optionContainer.appendChild(a);
 
   infoWindow = new google.maps.InfoWindow;
 
   
   // Setup the click event listeners: simply set the map to Chicago.
-  controlUI.addEventListener('change', function() {
-    //commenting this out for now. we'll need the general structure for week 2
-/*    var selected = document.getElementById("LocationAccessDropDown");
-    
-    if(selected.value == "1")
-    {
-      // debug pop-up box. remove in final
-      //alert("You selected enabled");
-       if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function(position) {
-      var pos = {
-        lat: position.coords.latitude,
-        lng: position.coords.longitude
-      };
-
-      infoWindow.setPosition(pos);
-      infoWindow.setContent('Location found.');
-      infoWindow.open(map);
-      map.setCenter(pos);
-    }, function() {
-      handleLocationError(true, infoWindow, map.getCenter());
-    });
-  } else {
-    // Browser doesn't support Geolocation
-    handleLocationError(false, infoWindow, map.getCenter());
-  }
-
-      
-      // todo: add code for location access enabled
-    } else if (selected.value == "2") {
-      // debug pop-up box. remove in final
-      //alert("You selected disabled");
-    infoWindow.close();
-      
-      // todo: add code for location access disabled
-    // Are we supposed to hiding marker?
-    }*/
-  });
+  //controlUI.addEventListener('change', function() {
+  //});
 
 }
 
@@ -107,8 +67,27 @@ function initMap() {
   // Create the DIV to hold the control and call the CenterControl()
   // constructor passing in this DIV.
   var centerControlDiv = document.createElement('div');
+  centerControlDiv.setAttribute("class", "dropdown");
   var centerControl = new CenterControl(centerControlDiv, map);
 
   centerControlDiv.index = 1;
   map.controls[google.maps.ControlPosition.TOP_RIGHT].push(centerControlDiv);
+}
+
+function dropdownFunction(){
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
 }
