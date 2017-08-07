@@ -5,5 +5,15 @@ create table `users` (
 `user_nm` varchar(255) not null,
 `password` varchar(255) not null,
 `user_email` varchar(255) not null,
+`hikes` tinyint(1),
+`tpark` tinyint(1),
+`museum` tinyint(1),
+`mall` tinyint(1),
+`npark` tinyint(1),
+`sports` tinyint(1),
+`wpark` tinyint(1),
+`landmark` tinyint(1),
+`musicEvent` tinyint(1),
 primary key (`user_id`)
 ) engine=innodb;
+
