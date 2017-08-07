@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Your Preferences</title>
+		<link rel="stylesheet" type="text/css" href="css/preferences.css">
+	</head>
+	<h2>Your Preferences</h2>
+	<body id="body-color">
+		<div class="preferences">
+			<p>
+				In order to allow the app to suggest relavent information to you, please select the types of attractions you're interested in:
+			</p>
+			<div style="display: none" id="uid">{{this.userID}}</div>
+			<div class="attractionBox">
+				<label>
+					<input type="checkbox" name="attraction" id="hikes"/>Nature Hikes
+					<br \>
+			</div>
+			<div class="attractionBox">
+				<label>
+					<input type="checkbox" name="attraction" id="tpark"/>Theme Parks
+					<br \>
+			</div>
+			<div class="attractionBox">
+				<label>
+					<input type="checkbox" name="attraction" id="museum"/>Museums
+					<br \>
+			</div>
+			<div class="attractionBox">
+				<label>
+					<input type="checkbox" name="attraction" id="mall"/>Shopping Malls
+					<br \>
+			</div>
+			<div class="attractionBox">
+				<label>
+					<input type="checkbox" name="attraction" id="npark"/>Nature Parks
+					<br \>
+			</div>
+			<div class="attractionBox">
+				<label>
+					<input type="checkbox" name="attraction" id="sports"/>Sporting Events
+					<br \>
+			</div>
+			<div class="attractionBox">
+				<label>
+					<input type="checkbox" name="attraction" id="wpark"/>Water Parks
+					<br \>
+			</div>
+			<div class="attractionBox">
+				<label>
+					<input type="checkbox" name="attraction" id="landmark"/>Famous Landmarks
+					<br \>
+			</div>
+			<div class="attractionBox">
+				<label>
+					<input type="checkbox" name="attraction" id="musicEvent"/>Music Events
+				</label>
+				<br \>
+			</div>
+			<input type="button" value="Submit" id="submit"/>
+			<input type="button" value="Skip" id="skip"/>
+
+		</div>
+		<script type="text/javascript" src="scripts/preferences.js"></script>
+	</body>
+</html>
