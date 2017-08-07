@@ -43,7 +43,7 @@ function addUser(){
 		req.addEventListener('load', function(){
 			if(req.status == 200){
 				alert("Account created successfully!");
-				window.location = "http://flip3.engr.oregonstate.edu:9477/";
+				window.location = "http://flip3.engr.oregonstate.edu:9477/preferences";
 			}
 			else{
 				alert("There was an error creating your account. Please try again later.");
