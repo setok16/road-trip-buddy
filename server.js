@@ -12,7 +12,7 @@ var mysql = require('./dbcon.js');
 
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
-app.set('port', 9478);
+app.set('port', 9477);
 
 app.use(session({
 	secret:'supersecret',
