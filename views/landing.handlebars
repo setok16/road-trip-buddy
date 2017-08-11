@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<style>
+		.dropbtn {
+		    background-color: #37a69b;
+		    color: white;
+		    padding: 16px;
+		    font-size: 16px;
+		    border: none;
+		    cursor: pointer;
+		}
+
+		/* Dropdown button on hover & focus */
+		.dropbtn:hover, .dropbtn:focus {
+		    background-color: #497a78;
+		}
+
+		/* Dropdown Content (Hidden by Default) */
+		.dropdown-content {
+		    display: none;
+		    position: absolute;
+		    background-color: #f9f9f9;
+		    min-width: 200px;
+		    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+		    z-index: 1;
+		    left:auto;
+		    right:0;
+		}
+
+		/* Links inside the dropdown */
+		.dropdown-content a {
+		    color: black;
+		    padding: 12px 16px;
+		    text-decoration: none;
+		    display: block;
+		}
+
+		/* Change color of dropdown links on hover */
+		.dropdown-content a:hover {background-color: #f1f1f1}
+
+		/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+		.show {display:block;}
+	</style>
+	<head>
+		<meta charset="UTF-8">
+		<title>Landing Page</title>
+		<link rel="stylesheet" href="css/style.css">
+	</head>
+	<body>
+		<div id="map"></div>
+		<script src="scripts/location.js"></script>
+		<script src="scripts/functions.js"></script>
+		<!-- Replace the value of the key parameter with your own API key. -->
+		<script async defer
+		src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDH789HFZhMYw3RdFFk8at3k0fVxFfm3wc&callback=initMap"></script>	
+	</body>
+</html>
+
