@@ -12,9 +12,13 @@ var mysql = require('./dbcon.js');
 
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
-app.set('port', 9477);
+app.set('port', 9478);
 
-app.use(session({secret:'supersecret'}));
+app.use(session({
+	secret:'supersecret',
+	resave: true,
+	saveUninitialized: true
+	}));
 
 app.use(bodyParser.urlencoded({ extended: false}));
 app.use(bodyParser.json());
@@ -107,6 +111,15 @@ app.post('/add_preferences', function(req,res,next) {
 		}
 	});
 	res.send();
+});
+
+/*******ENTER MODEL AND MAKE**************/
+app.get('/model_and_make', function(req,res,next) {
+	//if (req.session.name) {
+		res.render('model_and_make');
+	//} else {
+		//res.redirect('/');
+	//}
 });
 
 /************RUN THE APP******************/
