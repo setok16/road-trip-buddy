@@ -113,13 +113,31 @@ app.post('/add_preferences', function(req,res,next) {
 	res.send();
 });
 
-/*******ENTER MODEL AND MAKE**************/
+/*******ENTER MODEL AND MAKE PAGE**********/
 app.get('/model_and_make', function(req,res,next) {
 	//if (req.session.name) {
 		res.render('model_and_make');
 	//} else {
 		//res.redirect('/');
 	//}
+});
+
+/*************GAS STATION PAGE************/
+app.get('/gasstation', function(req,res,next) {
+	res.render('gasstation');
+});
+
+/************ADD GAS PREFERENCES***********/
+app.post('/add_gasstation', function(req,res,next) { // Need to set up the DB with the following fields first
+	mysql.pool.query("UPDATE users SET chevron=?, circlek=?, citgo=?, costco=?, cumberland=?, exxon=?, frontier=?, kum=?, mobil=?, race=?, shell=?, sams=?, speedway=?, sunoco=?, wawa=?, seven=?, methanol=?, gasoline=?, diesel=?, hydrogen=?, charge=?, biodiesel=?",
+		[req.body.BP, req.body.Chevron, req.body.Citgo, req.body.Costco, req.body.Cumberland, req.body.Exxon, req.body.Frontier, req.body.Kum, req.body.Mobil, req.body.Race, req.body.Shell, req.body.Sams, req.body.Speedway, req.body.Sonoco, req.body.Wawa, req.body.Seven, req.body.Methanol, req.body.Gasoline, req.body.Diesel, req.body.Hydrogen, req.body.Charge, req.body.Biodiesel],
+	function(err, result) {
+		if(err) {
+			next(err);
+			return;
+		}
+	});
+	res.send();
 });
 
 /************RUN THE APP******************/
